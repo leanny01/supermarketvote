@@ -14,7 +14,6 @@ const SuperMarketList = ()=>{
 
   const handlesuperMarketUpVote =  (superMarketId)=> {
 
-    console.log('called id : '+ superMarketId)
 
     const nextState = superMarkets.map(superMarket => {
       
