@@ -1,25 +1,77 @@
-import logo from './logo.svg';
+import React, { useState,useEffect } from 'react';
+
+import superMarketList from './List'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const SuperMarketList = ()=>{
+ 
+  const [superMarkets, setSuperMarkets] = useState([])
+
+  useEffect(()=>{
+    setSuperMarkets(superMarketList.superMarketList)
+  },[])
+
+  const handlesuperMarketUpVote =  (superMarketId)=> {
+
+    const nextState = superMarkets.map(superMarket => {
+
+        if (superMarketId === superMarketId.id) {
+            console.log('vote has been clicked')
+        } else {
+            return superMarket
+        }
+    })
+
+
 }
 
-export default App;
+ 
+
+  return (
+    <div>
+      {
+        superMarkets.map((superMarket) => <SuperMarket key={superMarket.id} superMarket={superMarket} handlesuperMarketUpVote ={handlesuperMarketUpVote}/>)
+      }
+    </div>
+
+  )
+
+}
+
+const SuperMarket = (props) => {
+
+  const {superMarket} = props;
+  const handleUpVote = ()=>{superMarket.handlesuperMarketUpVote(superMarket.id) }
+
+
+  return (
+    <div className="item">
+      <div className="image">
+        <img src={superMarket.superMarketImageUrl} />
+      </div>
+
+      <div className="middle aligned content">
+        <div className='header'>
+          <a onClick={handleUpVote}>
+            yes
+            <i className='large caret up icon' />
+          </a>
+          {superMarket.votes}
+        </div>
+        <div className="description">
+          <a>{superMarket.title}</a>
+          <p>{superMarket.description}</p>
+        </div>
+        <div className="extra">
+          <span>Submitted by:</span>
+          <img className="ui avatar image" src={superMarket.submitterAvatarUrl} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+
+export default SuperMarketList;
