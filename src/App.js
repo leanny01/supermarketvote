@@ -7,9 +7,12 @@ import './App.css';
 const SuperMarketList = ()=>{
  
   const [superMarkets, setSuperMarkets] = useState([])
+  
 
   useEffect(()=>{
     setSuperMarkets(superMarketList.superMarketList)
+
+   
   },[])
 
   const handlesuperMarketUpVote =  (superMarketId)=> {
@@ -32,7 +35,6 @@ const SuperMarketList = ()=>{
 }
 
  
-
   return (
     <div className="main ui text container">
       <h1 className="ui dividing centered header">Popular Supermarkets</h1>
@@ -40,7 +42,11 @@ const SuperMarketList = ()=>{
 
         <div id="content" className="ui unstackable items">
         {
-          superMarkets.map((superMarket) => <SuperMarket key={superMarket.id} superMarket={superMarket} handlesuperMarketUpVote ={handlesuperMarketUpVote}/>)
+         
+
+          superMarkets.sort((a,b)=> (b.votes - a.votes ))
+          .map((superMarket) => <SuperMarket key={superMarket.id} superMarket={superMarket} handlesuperMarketUpVote ={handlesuperMarketUpVote}/>)
+          
         }
       </div>
      
