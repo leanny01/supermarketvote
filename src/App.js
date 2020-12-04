@@ -14,14 +14,20 @@ const SuperMarketList = ()=>{
 
   const handlesuperMarketUpVote =  (superMarketId)=> {
 
-    const nextState = superMarkets.map(superMarket => {
+    console.log('called id : '+ superMarketId)
 
-        if (superMarketId === superMarketId.id) {
+    const nextState = superMarkets.map(superMarket => {
+      
+        if (superMarketId === superMarket.id) {
             console.log('vote has been clicked')
+            return {...superMarket,votes:superMarket.votes + 1}
         } else {
             return superMarket
         }
     })
+
+    setSuperMarkets(nextState)
+
 
 
 }
@@ -29,11 +35,19 @@ const SuperMarketList = ()=>{
  
 
   return (
-    <div>
-      {
-        superMarkets.map((superMarket) => <SuperMarket key={superMarket.id} superMarket={superMarket} handlesuperMarketUpVote ={handlesuperMarketUpVote}/>)
-      }
+    <div className="main ui text container">
+      <h1 className="ui dividing centered header">Popular Supermarkets</h1>
+      <div id="content">
+
+        <div id="content" className="ui unstackable items">
+        {
+          superMarkets.map((superMarket) => <SuperMarket key={superMarket.id} superMarket={superMarket} handlesuperMarketUpVote ={handlesuperMarketUpVote}/>)
+        }
+      </div>
+     
     </div>
+   </div>
+    
 
   )
 
@@ -41,8 +55,8 @@ const SuperMarketList = ()=>{
 
 const SuperMarket = (props) => {
 
-  const {superMarket} = props;
-  const handleUpVote = ()=>{superMarket.handlesuperMarketUpVote(superMarket.id) }
+  const {superMarket,handlesuperMarketUpVote} = props;
+  const handleUpVote = ()=>{handlesuperMarketUpVote(superMarket.id) }
 
 
   return (
