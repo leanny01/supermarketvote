@@ -1,3 +1,3 @@
 # About 
 
-A super market voting app, just for fun.
+Vote for your favorite supermarket, just for fun.

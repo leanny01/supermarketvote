@@ -28,7 +28,7 @@
       },
       {
         id: 2,
-        title: 'Cambridge',
+        title: 'Cambridge Food',
         description: 'Earn points when you shop at your favorite Cambridge supermarket store.',
         url: '#',
         votes: generateVoteCount(),
@@ -46,7 +46,7 @@
       },
       {
         id: 4,
-        title: 'Pick and Pay',
+        title: 'PnP',
         description: 'High-minded or absent-minded? You decide.',
         url: '#',
         votes: generateVoteCount(),
