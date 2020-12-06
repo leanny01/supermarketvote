@@ -73,7 +73,7 @@ const SuperMarket = (props) => {
       <div className="middle aligned content">
         <div className='header'>
           <a onClick={handleUpVote}>
-            yes
+           
             <i className='large caret up icon' />
           </a>
           {superMarket.votes}
