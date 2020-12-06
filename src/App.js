@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 
 import superMarketList from './List'
+
 import './App.css';
 
 
@@ -30,9 +31,8 @@ const SuperMarketList = ()=>{
 
     setSuperMarkets(nextState)
 
-
-
 }
+
 
  
   return (
